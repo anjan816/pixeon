@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  # Deployment used by `npx convex dev`
+  CONVEX_DEPLOYMENT:  # team: anjan816, project: ai-image-4077f
+  NEXT_PUBLIC_CONVEX_URL: 
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:    #CLERK_SECRET_KEY: sk_test_tt5GxFkkfAcDUYcyn00ZTf1xXcm0u4r14fcfxWBDkR
+  CLERK_JWT_ISSUER_DOMAIN: 
+  # Imagekit
+  NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY: 
+  NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT: 
+  
+  # Unsplash
+  NEXT_PUBLIC_UNSPLASH_ACCESS_KEY: 

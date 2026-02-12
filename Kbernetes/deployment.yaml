@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pixeon-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pixeon-app
+  template:
+    metadata:
+      labels:
+        app: pixeon-app
+    spec:
+      containers:
+        - name: pixeon-app
+          image: pixeon
+          ports:
+            - containerPort: 3000
+
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: app-secrets
+  volumeMounts:
+  - mountPath: "/app/data"
+    name: storage
+
+volumes:
+  - name: storage
+    persistentVolumeClaim:
+      claimName: app-pvc

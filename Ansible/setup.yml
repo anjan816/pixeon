@@ -1,0 +1,95 @@
+---
+- name: Install DevOps Stack
+  hosts: target
+  become: yes
+
+  tasks:
+
+    - name: Update apt
+      apt:
+        update_cache: yes
+
+    # -------------------------
+    # Install Node.js & npm
+    # -------------------------
+    - name: Install Node.js & npm
+      apt:
+        name:
+          - nodejs
+          - npm
+        state: present
+
+    # -------------------------
+    # Install Nginx
+    # -------------------------
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    # -------------------------
+    # Install Docker
+    # -------------------------
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Start Docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    # -------------------------
+    # Install Jenkins
+    # -------------------------
+    - name: Add Jenkins Key
+      apt_key:
+        url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+        state: present
+
+    - name: Add Jenkins Repo
+      apt_repository:
+        repo: deb https://pkg.jenkins.io/debian-stable binary/
+        state: present
+
+    - name: Install Java (Required for Jenkins)
+      apt:
+        name: openjdk-17-jdk
+        state: present
+
+    - name: Install Jenkins
+      apt:
+        name: jenkins
+        state: present
+
+    - name: Start Jenkins
+      service:
+        name: jenkins
+        state: started
+        enabled: yes
+
+    # -------------------------
+    # Install Kubernetes
+    # -------------------------
+    - name: Install Kubernetes packages
+      apt:
+        name:
+          - kubelet
+          - kubeadm
+          - kubectl
+        state: present
+
+        #handlers
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
