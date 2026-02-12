@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "pixeon"
+        DOCKER_IMAGE = "anjan03/pixeon"
         BUILD_NUMBER = "latest"
         KUBE_DEPLOYMENT = "pixeon-app"
         CONTAINER_NAME = "pixeon-container"
