@@ -61,8 +61,8 @@ pipeline {
 
         stage('runn container') {
             steps {
-                sh 'docker run -d -p 3000:3000 anjan03/pixeon:latest
-'
+                sh 'docker run -d -p 3000:3000 anjan03/pixeon:latest'
+
             }
         }
 
