@@ -35,7 +35,7 @@ pipeline {
                         --build-arg NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT=$NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT \
                         --build-arg IMAGEKIT_PRIVATE_KEY=$IMAGEKIT_PRIVATE_KEY \
                         --build-arg NEXT_PUBLIC_UNSPLASH_ACCESS_KEY=$NEXT_PUBLIC_UNSPLASH_ACCESS_KEY \
-                        -t pixeon .
+                        -t $DOCKER_IMAGE:$DOCKER_TAG .
                         '''
     }
             }
