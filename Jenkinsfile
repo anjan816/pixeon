@@ -25,6 +25,7 @@ pipeline {
                       -t pixeon .
                     '''
                 }
+            }
         }
 
         stage('Login to DockerHub') {
