@@ -59,31 +59,31 @@ pipeline {
             }
         }
 
-        stage('Apply Kubernetes Manifests') {
-            steps {
-                sh 'kubectl apply -f k8s/'
-            }
-        }
+        // stage('Apply Kubernetes Manifests') {
+        //     steps {
+        //         sh 'kubectl apply -f k8s/'
+        //     }
+        // }
 
-        stage('Update Image in Deployment') {
-            steps {
-                sh """
-                kubectl set image deployment/$KUBE_DEPLOYMENT \
-                $CONTAINER_NAME=$DOCKER_IMAGE:$DOCKER_TAG
-                """
-            }
-        }
+        // stage('Update Image in Deployment') {
+        //     steps {
+        //         sh """
+        //         kubectl set image deployment/$KUBE_DEPLOYMENT \
+        //         $CONTAINER_NAME=$DOCKER_IMAGE:$DOCKER_TAG
+        //         """
+        //     }
+        // }
 
-        stage('Rollout Restart') {
-            steps {
-                sh 'kubectl rollout restart deployment $KUBE_DEPLOYMENT'
-            }
-        }
+        // stage('Rollout Restart') {
+        //     steps {
+        //         sh 'kubectl rollout restart deployment $KUBE_DEPLOYMENT'
+        //     }
+        // }
 
-        stage('Verify Deployment') {
-            steps {
-                sh 'kubectl rollout status deployment $KUBE_DEPLOYMENT'
-            }
-        }
+        // stage('Verify Deployment') {
+        //     steps {
+        //         sh 'kubectl rollout status deployment $KUBE_DEPLOYMENT'
+        //     }
+        // }
     }
 }
