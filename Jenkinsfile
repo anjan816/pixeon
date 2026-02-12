@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "pixeon"
+        BUILD_NUMBER = "latest"
         KUBE_DEPLOYMENT = "pixeon-app"
         CONTAINER_NAME = "pixeon-container"
     }
