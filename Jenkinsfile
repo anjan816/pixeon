@@ -61,7 +61,13 @@ pipeline {
 
         stage('runn container') {
             steps {
-                sh 'docker run -d -p 3000:3000 anjan03/pixeon:latest'
+                sh 'docker stop $CONTAINER_NAME || true
+                docker rm $CONTAINER_NAME || true
+
+                docker run -d \
+                  --name $CONTAINER_NAME \
+                  -p 3000:3000 \
+                  $DOCKER_IMAGE:$DOCKER_TAG'
 
             }
         }
