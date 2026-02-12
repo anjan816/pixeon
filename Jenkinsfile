@@ -13,29 +13,29 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 withCredentials([
-                        string(credentialsId: 'CONVEX_DEPLOYMENT', variable: 'CONVEX_DEPLOYMENT'),
-                         string(credentialsId: 'NEXT_PUBLIC_CONVEX_URL', variable: 'NEXT_PUBLIC_CONVEX_URL'),
-                         string(credentialsId: 'NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY', variable: 'NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY'),
-                        string(credentialsId: 'CLERK_SECRET_KEY', variable: 'CLERK_SECRET_KEY'),
-                         string(credentialsId: 'CLERK_JWT_ISSUER_DOMAIN', variable: 'CLERK_JWT_ISSUER_DOMAIN'),
-                        string(credentialsId: 'NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY', variable: 'NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY'),
-                        string(credentialsId: 'NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT', variable: 'NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT'),
-                        string(credentialsId: 'IMAGEKIT_PRIVATE_KEY', variable: 'IMAGEKIT_PRIVATE_KEY'),
-                        string(credentialsId: 'NEXT_PUBLIC_UNSPLASH_ACCESS_KEY', variable: 'NEXT_PUBLIC_UNSPLASH_ACCESS_KEY')
+                        string(credentialsId: 'convex-deployment', variable: 'CONVEX_DEPLOYMENT'),
+                         string(credentialsId: 'convex-url', variable: 'NEXT_PUBLIC_CONVEX_URL'),
+                         string(credentialsId: 'clerk-publishable', variable: 'NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY'),
+                             string(credentialsId: 'clerk-secret', variable: 'CLERK_SECRET_KEY'),
+                         string(credentialsId: 'clerk-issuer', variable: 'CLERK_JWT_ISSUER_DOMAIN'),
+                        string(credentialsId: 'imagekit-public', variable: 'NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY'),
+                        string(credentialsId: 'imagekit-url', variable: 'NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT'),
+                        string(credentialsId: 'imagekit-private', variable: 'IMAGEKIT_PRIVATE_KEY'),
+                        string(credentialsId: 'unsplash-access', variable: 'NEXT_PUBLIC_UNSPLASH_ACCESS_KEY')
          ]) {
                     sh '''
                          docker build \
-                            --build-arg CONVEX_DEPLOYMENT=$CONVEX_DEPLOYMENT \
-                            --build-arg NEXT_PUBLIC_CONVEX_URL=$NEXT_PUBLIC_CONVEX_URL \
-                            --build-arg NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=$NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY \
-                            --build-arg CLERK_SECRET_KEY=$CLERK_SECRET_KEY \
-                            --build-arg CLERK_JWT_ISSUER_DOMAIN=$CLERK_JWT_ISSUER_DOMAIN \
-                            --build-arg NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY=$NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY \
-                            --build-arg NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT=$NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT \
-                            --build-arg IMAGEKIT_PRIVATE_KEY=$IMAGEKIT_PRIVATE_KEY \
-                            --build-arg NEXT_PUBLIC_UNSPLASH_ACCESS_KEY=$NEXT_PUBLIC_UNSPLASH_ACCESS_KEY \
-                            -t pixeon .
-                            '''
+                        --build-arg CONVEX_DEPLOYMENT=$CONVEX_DEPLOYMENT \
+                        --build-arg NEXT_PUBLIC_CONVEX_URL=$NEXT_PUBLIC_CONVEX_URL \
+                        --build-arg NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=$NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY \
+                        --build-arg CLERK_SECRET_KEY=$CLERK_SECRET_KEY \
+                        --build-arg CLERK_JWT_ISSUER_DOMAIN=$CLERK_JWT_ISSUER_DOMAIN \
+                        --build-arg NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY=$NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY \
+                        --build-arg NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT=$NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT \
+                        --build-arg IMAGEKIT_PRIVATE_KEY=$IMAGEKIT_PRIVATE_KEY \
+                        --build-arg NEXT_PUBLIC_UNSPLASH_ACCESS_KEY=$NEXT_PUBLIC_UNSPLASH_ACCESS_KEY \
+                        -t pixeon .
+                        '''
     }
             }
         }
