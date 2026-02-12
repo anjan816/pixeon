@@ -67,7 +67,7 @@ pipeline {
 
                 docker run -d \
                   --name $CONTAINER_NAME \
-                  -p 3000:3000 \
+                  -p 3000:3001 \
                   $DOCKER_IMAGE:$DOCKER_TAG
                   '''
 
