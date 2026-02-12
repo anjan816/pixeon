@@ -12,8 +12,19 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE .'
-            }
+                withCredentials([
+                    string(credentialsId: 'imagekit-public', variable: 'IMAGEKIT_PUBLIC_KEY'),
+                    string(credentialsId: 'imagekit-private', variable: 'IMAGEKIT_PRIVATE_KEY'),
+                    string(credentialsId: 'imagekit-url', variable: 'IMAGEKIT_URL_ENDPOINT')
+                ]) {
+                    sh '''
+                    docker build \
+                      --build-arg IMAGEKIT_PUBLIC_KEY=$IMAGEKIT_PUBLIC_KEY \
+                      --build-arg IMAGEKIT_PRIVATE_KEY=$IMAGEKIT_PRIVATE_KEY \
+                      --build-arg IMAGEKIT_URL_ENDPOINT=$IMAGEKIT_URL_ENDPOINT \
+                      -t pixeon .
+                    '''
+                }
         }
 
         stage('Login to DockerHub') {
