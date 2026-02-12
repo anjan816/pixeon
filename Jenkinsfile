@@ -16,7 +16,7 @@ pipeline {
                         string(credentialsId: 'CONVEX_DEPLOYMENT', variable: 'CONVEX_DEPLOYMENT'),
                          string(credentialsId: 'NEXT_PUBLIC_CONVEX_URL', variable: 'NEXT_PUBLIC_CONVEX_URL'),
                          string(credentialsId: 'NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY', variable: 'NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY'),
-                             string(credentialsId: 'CLERK_SECRET_KEY', variable: 'CLERK_SECRET_KEY'),
+                        string(credentialsId: 'CLERK_SECRET_KEY', variable: 'CLERK_SECRET_KEY'),
                          string(credentialsId: 'CLERK_JWT_ISSUER_DOMAIN', variable: 'CLERK_JWT_ISSUER_DOMAIN'),
                         string(credentialsId: 'NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY', variable: 'NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY'),
                         string(credentialsId: 'NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT', variable: 'NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT'),
