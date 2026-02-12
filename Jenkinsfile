@@ -59,11 +59,12 @@ pipeline {
             }
         }
 
-        // stage('Apply Kubernetes Manifests') {
-        //     steps {
-        //         sh 'kubectl apply -f k8s/'
-        //     }
-        // }
+        stage('runn container') {
+            steps {
+                sh 'docker run -d -p 3000:3000 anjan03/pixeon:latest
+'
+            }
+        }
 
         // stage('Update Image in Deployment') {
         //     steps {
