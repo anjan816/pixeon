@@ -37,7 +37,7 @@ export const FloatingShapes = () => {
       {shapes.map((shape) => (
         <div
           key={shape.id}
-          className={`absolute ${shape.size} ${shape.position} bg-gradient-to-r ${shape.gradient} rounded-full blur-3xl opacity-20 animate-pulse`}
+          className={`absolute ${shape.size} ${shape.position} bg-gradient-to-r ${shape.gradient} blur-0xl opacity-20 animate-pulse`}
           style={{
             transform: `translateY(${scrollY * 0.5}px) rotate(${scrollY * 0.1}deg)`,
           }}
