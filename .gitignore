@@ -41,8 +41,8 @@ yarn-error.log*
 next-env.d.ts
 
 #mp4
-*demo.mp4
-*.mp4
+#*demo.mp4
+#*.mp4
 
 
 *.tfstate.backup
